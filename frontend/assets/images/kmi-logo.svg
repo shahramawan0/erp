@@ -1,0 +1,93 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <!-- Modern gradient background -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f8f9fa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- KMI Brand gradient -->
+    <linearGradient id="kmiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1d4ed8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Accent gradient -->
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Subtle pattern -->
+    <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#e5e7eb" opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGradient)"/>
+  <rect width="800" height="600" fill="url(#dotPattern)"/>
+  
+  <!-- Geometric background shapes -->
+  <g opacity="0.05">
+    <rect x="50" y="50" width="200" height="200" rx="20" fill="url(#kmiGradient)"/>
+    <circle cx="650" cy="450" r="120" fill="url(#accentGradient)"/>
+    <polygon points="700,100 750,150 700,200 650,150" fill="url(#kmiGradient)"/>
+  </g>
+  
+  <!-- Main KMI Logo Container -->
+  <g transform="translate(400, 300)">
+    <!-- Logo background - modern rounded rectangle -->
+    <rect x="-140" y="-80" width="280" height="160" rx="25" fill="url(#kmiGradient)" stroke="#ffffff" stroke-width="3"/>
+    
+    <!-- K letter - vector style -->
+    <g fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M -100 -50 L -100 50"/>
+      <path d="M -100 0 L -40 -40"/>
+      <path d="M -100 0 L -40 40"/>
+    </g>
+    
+    <!-- M letter - vector style -->
+    <g fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M -20 -50 L -20 50"/>
+      <path d="M -20 -50 L 0 -20 L 20 -50"/>
+      <path d="M 20 -50 L 20 50"/>
+    </g>
+    
+    <!-- I letter - vector style -->
+    <g fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 40 -50 L 40 50"/>
+      <path d="M 30 -50 L 50 -50"/>
+      <path d="M 30 50 L 50 50"/>
+    </g>
+    
+    <!-- Modern accent line -->
+    <rect x="-140" y="60" width="280" height="4" rx="2" fill="url(#accentGradient)"/>
+  </g>
+  
+  <!-- Decorative vector elements -->
+  <g opacity="0.1">
+    <!-- Top left geometric shape -->
+    <polygon points="100,80 150,80 150,130 100,130" fill="url(#kmiGradient)"/>
+    
+    <!-- Bottom right geometric shape -->
+    <polygon points="650,470 700,470 700,520 650,520" fill="url(#accentGradient)"/>
+    
+    <!-- Center decorative circles -->
+    <circle cx="150" cy="450" r="30" fill="url(#kmiGradient)"/>
+    <circle cx="650" cy="150" r="25" fill="url(#accentGradient)"/>
+  </g>
+  
+  <!-- Subtle grid lines -->
+  <g opacity="0.1" stroke="#6b7280" stroke-width="1">
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+  </g>
+</svg> 

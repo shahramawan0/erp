@@ -1,0 +1,6 @@
+<footer class="bg-white dark:bg-[#0c1427] rounded-t-md px-[20px] md:px-[25px] py-[15px] md:py-[20px] text-center">
+    <p>
+        © <span class="text-purple-500"></span> All right reserved by <a href="#" class="text-primary-500 transition-all hover:underline">Khawaja Traders</a>
+    </p>
+</footer>
+
