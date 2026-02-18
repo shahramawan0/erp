@@ -26,7 +26,7 @@ if (isAuthenticated()) {
         <link rel="stylesheet" href="assets/css/style.css">
 
         <!-- Favicon -->
-		<link rel="icon" type="image/png" href="assets/images/favicon.ico">
+		<link rel="icon" type="image/png" href="assets/images/logo/icon.webp">
 
         <!-- Title -->
         <title>Khawaja Traders - Sign In</title>
