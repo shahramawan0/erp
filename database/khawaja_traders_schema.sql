@@ -243,6 +243,8 @@ CREATE TABLE IF NOT EXISTS `items` (
   `code` varchar(100) DEFAULT NULL,
   `normalized_sku` varchar(100) DEFAULT NULL,
   `description` text,
+  `purchase_rate` decimal(18,4) DEFAULT NULL,
+  `sale_rate` decimal(18,4) DEFAULT NULL,
   `status` enum('I','PI','A') DEFAULT 'I',
   `is_deleted` tinyint(1) NOT NULL DEFAULT 0,
   `deleted_at` datetime DEFAULT NULL,

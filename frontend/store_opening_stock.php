@@ -56,7 +56,7 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
         color: #92400e;
     }
 
-    /* Add item button styling to match store_demand.php */
+    /* Add item button styling to match account_management.php (primary theme) */
     .add-item-button {
         display: inline-flex;
         align-items: center;
@@ -66,18 +66,16 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
         font-weight: 600;
         border-radius: 8px;
         border: 1px solid transparent;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
         transition: all .2s ease;
-        background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        background: var(--tw-color-primary-500, #6366f1);
         color: #fff;
-        border-color: #16a34a;
+        border-color: var(--tw-color-primary-500, #6366f1);
     }
 
     .add-item-button:hover {
-        background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
-        border-color: #15803d;
+        background: var(--tw-color-primary-400, #818cf8);
+        border-color: var(--tw-color-primary-400, #818cf8);
         transform: translateY(-1px);
-        box-shadow: 0 8px 16px rgba(22, 163, 74, 0.25);
     }
 
     .add-item-button .add-icon {
@@ -187,14 +185,14 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
                             <label for="narration" class="float-label bg-white dark:bg-[#0c1427] text-gray-500 dark:text-gray-400">Description</label>
                         </div>
                         <div class="mb-[10px] md:mb-[10px] last:mb-0 float-group h-[30px]">
-                            <button type="button" id="add_item_btn" class="h-[30px] w-full rounded-md border border-purple-500 bg-purple-500 text-white transition-all hover:bg-purple-400 hover:border-purple-400 flex items-center justify-center">
+                            <button type="button" id="add_item_btn" class="h-[30px] w-full rounded-md border border-primary-500 bg-primary-500 text-white transition-all hover:bg-primary-400 hover:border-primary-400 flex items-center justify-center">
                                 <i class="material-symbols-outlined mr-[8px]">add</i>
                                 <span>Add Item</span>
                             </button>
                         </div>
 
                         <!-- <div class="mb-[15px]">
-                            <button type="button" onclick="addItemToTable()" class="h-[30px] w-full rounded-md border border-purple-500 bg-purple-500 text-white transition-all hover:bg-purple-400 hover:border-purple-400 flex items-center justify-center">
+                            <button type="button" onclick="addItemToTable()" class="h-[30px] w-full rounded-md border border-primary-500 bg-primary-500 text-white transition-all hover:bg-primary-400 hover:border-primary-400 flex items-center justify-center">
                                 <i class="material-symbols-outlined mr-[8px]">add</i>
                                 <span>Add</span>
                             </button>
@@ -222,7 +220,7 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
 
                 <!-- Submit Button -->
                 <div class="mb-[10px] md:mb-[10px] last:mb-0 float-group">
-                    <button type="button" id="post_btn" class="h-[30px] w-full rounded-md border border-purple-500 bg-purple-500 text-white transition-all hover:bg-purple-400 hover:border-purple-400 flex items-center justify-center">
+                    <button type="button" id="post_btn" class="h-[30px] w-full rounded-md border border-primary-500 bg-primary-500 text-white transition-all hover:bg-primary-400 hover:border-primary-400 flex items-center justify-center">
                         <i class="material-symbols-outlined mr-[8px]">check_circle</i>
                         <span>Post Opening Stock</span>
                     </button>
@@ -230,10 +228,10 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
 
 
                 <!-- <div class="mb-[10px] md:mb-[10px] last:mb-0 float-group">
-                    <button  type="button" id="submitIssuance" onclick="submitIssuance()" class="h-[30px] w-full rounded-md border border-purple-500 bg-purple-500 text-white transition-all hover:bg-purple-400 hover:border-purple-400 flex items-center justify-center">
-                        <i class="material-symbols-outlined">check</i>
-                        <span>Submit Issuance</span>
-                    </button>
+<button  type="button" id="submitIssuance" onclick="submitIssuance()" class="h-[30px] w-full rounded-md border border-primary-500 bg-primary-500 text-white transition-all hover:bg-primary-400 hover:border-primary-400 flex items-center justify-center">
+                                        <i class="material-symbols-outlined">check</i>
+                                        <span>Submit Issuance</span>
+                                    </button>
                  </div> -->
             </div>
         </div>
@@ -421,7 +419,7 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
                             <i class="material-symbols-outlined text-lg">close</i>
                             <span>Cancel</span>
                         </button>
-                        <button class="inline-flex items-center justify-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:opacity-75 disabled:cursor-not-allowed min-w-[140px]" type="button" id="updateOpeningStockBtn">
+                        <button class="inline-flex items-center justify-center gap-2 px-6 py-2 bg-primary-500 hover:bg-primary-400 text-white font-medium rounded-md transition-all focus:outline-none disabled:opacity-75 disabled:cursor-not-allowed min-w-[140px]" type="button" id="updateOpeningStockBtn">
                             <i class="material-symbols-outlined text-lg">save</i>
                             <span>Update</span>
                         </button>
@@ -2254,11 +2252,11 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
                     </td>
                     <td class="px-[20px] py-[12px] text-sm text-center">
                         <div class="flex items-center justify-center gap-[8px]">
-                            <button type="button" onclick="viewOpeningStock(${record.voucher_no})" class="text-primary-500" title="View">
+                            <button type="button" onclick="viewOpeningStock(${record.voucher_no})" class="text-blue-500 hover:text-blue-600" title="View">
                                 <i class="material-symbols-outlined text-sm">visibility</i>
                             </button>
                             <?php if ($defaultRoleStatus != 'PM'): ?>
-                            <button type="button" onclick="editOpeningStock(${record.voucher_no})" class="text-blue-500" title="Edit">
+                            <button type="button" onclick="editOpeningStock(${record.voucher_no})" class="text-blue-500 hover:text-blue-600" title="Edit">
                                 <i class="material-symbols-outlined text-sm">edit</i>
                             </button>
                             <?php endif; ?>
@@ -2687,8 +2685,8 @@ $defaultUnitName = $currentUser['unit_name'] ?? null;
                     <div class="mb-[20px]">
                         <div class="flex items-center justify-between mb-[15px]">
                             <h6 class="text-sm font-medium text-gray-700 dark:text-gray-300">Items in this Voucher</h6>
-                            <button type="button" id="addNewItemBtn" class="add-item-button">
-                                <i class="material-symbols-outlined add-icon">add_circle</i>
+                            <button type="button" id="addNewItemBtn" class="inline-flex items-center gap-2 rounded-md border border-primary-500 bg-primary-500 text-white px-3 py-1.5 text-sm font-semibold hover:bg-primary-400 hover:border-primary-400 transition-all">
+                                <i class="material-symbols-outlined text-lg">add_circle</i>
                                 <span>Add Item</span>
                             </button>
                         </div>

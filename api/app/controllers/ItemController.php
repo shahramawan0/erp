@@ -31,6 +31,27 @@ class ItemController extends BaseController {
 
     protected function isPublicEndpoint() { return true; }
 
+    /**
+     * Validate and sanitize purchase_rate and sale_rate. Mutates $data. Returns list of errors.
+     */
+    private function validateAndSanitizeRates(array &$data) {
+        $errors = [];
+        foreach (['purchase_rate' => 'Purchase rate', 'sale_rate' => 'Sale rate'] as $key => $label) {
+            if (!array_key_exists($key, $data)) continue;
+            $v = $data[$key];
+            if ($v === null || $v === '' || (is_string($v) && trim($v) === '')) {
+                $data[$key] = null;
+                continue;
+            }
+            if (!is_numeric($v) || (float)$v < 0) {
+                $errors[] = "$label must be a non-negative number";
+                continue;
+            }
+            $data[$key] = round((float)$v, 4);
+        }
+        return $errors;
+    }
+
     public function index() {
         try {
             $page = $_GET['page'] ?? 1;
@@ -99,6 +120,11 @@ class ItemController extends BaseController {
                 $this->sendError('Validation failed', 400, $errors);
                 return;
             }
+            $rateErrors = $this->validateAndSanitizeRates($data);
+            if (!empty($rateErrors)) {
+                $this->sendError('Validation failed', 400, $rateErrors);
+                return;
+            }
             $companyId = $this->getCurrentUser() ? $this->getCurrentUser()['company_id'] : 1;
             $data['company_id'] = $companyId;
             $unitId = $data['unit_id'] ?? null;
@@ -149,6 +175,11 @@ class ItemController extends BaseController {
             $errors = $this->validateRequired($data, $required);
             if (!empty($errors)) {
                 $this->sendError('Validation failed', 400, $errors);
+                return;
+            }
+            $rateErrors = $this->validateAndSanitizeRates($data);
+            if (!empty($rateErrors)) {
+                $this->sendError('Validation failed', 400, $rateErrors);
                 return;
             }
             $companyId = $this->getCurrentUser() ? $this->getCurrentUser()['company_id'] : 1;

@@ -22,7 +22,7 @@ function isActiveSection($sectionPages) { return in_array(basename($_SERVER['PHP
                     <span class="title leading-none">Dashboard</span>
                 </a>
             </div>
-            <?php $chartOfCodePages = ['item_management.php', 'misc_entries.php']; $isChartOfCodeActive = isActiveSection($chartOfCodePages); ?>
+            <?php $chartOfCodePages = ['item_management.php', 'misc_entries.php', 'account_management.php']; $isChartOfCodeActive = isActiveSection($chartOfCodePages); ?>
             <div class="accordion-item rounded-md text-black dark:text-white mb-[5px] whitespace-nowrap">
                 <button class="accordion-button toggle <?php echo $isChartOfCodeActive ? 'open active bg-primary-50 text-primary-500 dark:bg-[#15203c] dark:text-primary-400' : ''; ?> flex items-center transition-all py-[9px] ltr:pl-[14px] ltr:pr-[28px] rtl:pr-[14px] rtl:pl-[28px] rounded-md font-medium w-full relative hover:bg-gray-50 text-left dark:hover:bg-[#15203c]" type="button">
                     <i class="material-symbols-outlined transition-all <?php echo $isChartOfCodeActive ? 'text-primary-500 dark:text-primary-400' : 'text-gray-500 dark:text-gray-400'; ?> ltr:mr-[7px] rtl:ml-[7px] !text-[22px] leading-none relative -top-px">code</i>
@@ -36,6 +36,9 @@ function isActiveSection($sectionPages) { return in_array(basename($_SERVER['PHP
                             </li>
                             <li class="sidemenu-item mb-[4px] last:mb-0">
                                 <a href="misc_entries.php" class="sidemenu-link <?php echo isActivePage('misc_entries.php') ? 'active bg-primary-50 text-primary-500 dark:bg-[#15203c] dark:text-primary-400' : 'text-gray-500 dark:text-gray-400'; ?> rounded-md flex items-center relative transition-all font-medium py-[9px] ltr:pl-[38px] ltr:pr-[30px] rtl:pr-[38px] rtl:pl-[30px] hover:text-primary-500 hover:bg-primary-50 w-full text-left dark:hover:bg-[#15203c]">Misc Entries</a>
+                            </li>
+                            <li class="sidemenu-item mb-[4px] last:mb-0">
+                                <a href="account_management.php" class="sidemenu-link <?php echo isActivePage('account_management.php') ? 'active bg-primary-50 text-primary-500 dark:bg-[#15203c] dark:text-primary-400' : 'text-gray-500 dark:text-gray-400'; ?> rounded-md flex items-center relative transition-all font-medium py-[9px] ltr:pl-[38px] ltr:pr-[30px] rtl:pr-[38px] rtl:pl-[30px] hover:text-primary-500 hover:bg-primary-50 w-full text-left dark:hover:bg-[#15203c]">Account Management</a>
                             </li>
                         </ul>
                     </div>

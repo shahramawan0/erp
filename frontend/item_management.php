@@ -936,6 +936,18 @@
                                                     placeholder="">
                                                 <label class="float-label bg-white dark:bg-[#0c1427] text-gray-500 dark:text-gray-400">Max Order Level</label>
                                             </div>
+                                            <div class="mb-[10px] float-group">
+                                                <input type="number" id="erpItemPurchaseRate" name="purchase_rate" min="0" step="0.01"
+                                                    class="h-[30px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#0c1427] px-[12px] block w-full outline-0 transition-all focus:border-primary-500 text-sm"
+                                                    placeholder="">
+                                                <label class="float-label bg-white dark:bg-[#0c1427] text-gray-500 dark:text-gray-400">Purchase Rate</label>
+                                            </div>
+                                            <div class="mb-[10px] float-group">
+                                                <input type="number" id="erpItemSaleRate" name="sale_rate" min="0" step="0.01"
+                                                    class="h-[30px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#0c1427] px-[12px] block w-full outline-0 transition-all focus:border-primary-500 text-sm"
+                                                    placeholder="">
+                                                <label class="float-label bg-white dark:bg-[#0c1427] text-gray-500 dark:text-gray-400">Sale Rate</label>
+                                            </div>
                                             <div id="erpAttributeFields" class="md:col-span-2"></div>
                                             <div class="mb-[10px]">
                                                 <button type="submit" id="submitErpItemBtn"
@@ -974,6 +986,8 @@
                                                         <th class="font-medium ltr:text-left rtl:text-right px-[20px] py-[5px] bg-gray-50 dark:bg-[#15203c] whitespace-nowrap">Category</th>
                                                         <th class="font-medium ltr:text-left rtl:text-right px-[20px] py-[5px] bg-gray-50 dark:bg-[#15203c] whitespace-nowrap">Group</th>
                                                         <th class="font-medium ltr:text-left rtl:text-right px-[20px] py-[5px] bg-gray-50 dark:bg-[#15203c] whitespace-nowrap">Sub-Group</th>
+                                                        <th class="font-medium ltr:text-right rtl:text-left px-[20px] py-[5px] bg-gray-50 dark:bg-[#15203c] whitespace-nowrap">Purchase Rate</th>
+                                                        <th class="font-medium ltr:text-right rtl:text-left px-[20px] py-[5px] bg-gray-50 dark:bg-[#15203c] whitespace-nowrap">Sale Rate</th>
                                                         <th class="font-medium text-left px-[20px] py-[5px] bg-gray-50 dark:bg-[#15203c] whitespace-nowrap last:rounded-tr-md">Actions</th>
                                                     </tr>
                                                 </thead>
@@ -1394,6 +1408,14 @@
                                 <div class="relative float-group">
                                     <input type="number" id="editErpItemMaxOrderLevel" name="max_order_level" min="0" step="1" class="h-[40px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#15203c] px-[12px] block w-full text-sm" placeholder="">
                                     <label class="float-label bg-white dark:bg-[#15203c] text-gray-500">Max Order Level</label>
+                                </div>
+                                <div class="relative float-group">
+                                    <input type="number" id="editErpItemPurchaseRate" name="purchase_rate" min="0" step="0.01" class="h-[40px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#15203c] px-[12px] block w-full text-sm" placeholder="">
+                                    <label class="float-label bg-white dark:bg-[#15203c] text-gray-500">Purchase Rate</label>
+                                </div>
+                                <div class="relative float-group">
+                                    <input type="number" id="editErpItemSaleRate" name="sale_rate" min="0" step="0.01" class="h-[40px] rounded-md text-black dark:text-white border border-gray-200 dark:border-[#172036] bg-white dark:bg-[#15203c] px-[12px] block w-full text-sm" placeholder="">
+                                    <label class="float-label bg-white dark:bg-[#15203c] text-gray-500">Sale Rate</label>
                                 </div>
                             </div>
                             <!-- Dynamic Attribute Fields Container -->
@@ -7316,7 +7338,7 @@
                     const controls = document.getElementById('erpItemsPaginationControls');
                     if (tbody) {
                         tbody.innerHTML = records.length === 0
-                            ? '<tr><td colspan="6" class="px-[20px] py-[12px] text-gray-500 text-center">No items found. Run migrations and add items.</td></tr>'
+                            ? '<tr><td colspan="8" class="px-[20px] py-[12px] text-gray-500 text-center">No items found. Run migrations and add items.</td></tr>'
                             : records.map(it => `
                                 <tr class="border-b border-gray-100 dark:border-[#172036] hover:bg-gray-50 dark:hover:bg-[#15203c]">
                                     <td class="px-[20px] py-[10px] text-sm">${(it.source_id || it.normalized_sku || it.legacy_code || it.code || '-')}</td>
@@ -7324,6 +7346,8 @@
                                     <td class="px-[20px] py-[10px] text-sm">${(it.category_name || '-')}</td>
                                     <td class="px-[20px] py-[10px] text-sm">${(it.group_name || '-')}</td>
                                     <td class="px-[20px] py-[10px] text-sm">${(it.sub_group_name || '-')}</td>
+                                    <td class="px-[20px] py-[10px] text-sm text-right">${(it.purchase_rate != null && it.purchase_rate !== '') ? Number(it.purchase_rate).toLocaleString() : '-'}</td>
+                                    <td class="px-[20px] py-[10px] text-sm text-right">${(it.sale_rate != null && it.sale_rate !== '') ? Number(it.sale_rate).toLocaleString() : '-'}</td>
                                     <td class="px-[20px] py-[10px]">
                                         ${canErpEdit() ? `<button type="button" class="text-blue-500 hover:text-blue-600" onclick="if(window.editErpItem) editErpItem(${it.id});" title="Edit"><i class="material-symbols-outlined text-sm">edit</i></button>` : ''}
                                         ${canErpAssignRack() ? `<button type="button" class="text-green-500 hover:text-green-600 ${canErpEdit() ? 'ltr:ml-2 rtl:mr-2' : ''}" onclick="assignRack(${it.id});" title="Assign/Edit Rack"><i class="material-symbols-outlined text-sm">location_on</i></button>` : ''}
@@ -7389,9 +7413,13 @@
                         const wCalc = document.getElementById('erpItemCalculatedWeight')?.value;
                         const minOl = document.getElementById('erpItemMinOrderLevel')?.value;
                         const maxOl = document.getElementById('erpItemMaxOrderLevel')?.value;
+                        const purchaseRate = document.getElementById('erpItemPurchaseRate')?.value;
+                        const saleRate = document.getElementById('erpItemSaleRate')?.value;
                         if (wCalc) payload.calculated_weight = parseFloat(wCalc);
                         if (minOl) payload.min_order_level = parseInt(minOl);
                         if (maxOl) payload.max_order_level = parseInt(maxOl);
+                        if (purchaseRate !== undefined && purchaseRate !== '') payload.purchase_rate = parseFloat(purchaseRate);
+                        if (saleRate !== undefined && saleRate !== '') payload.sale_rate = parseFloat(saleRate);
                         const attrInputs = document.querySelectorAll('#erpAttributeFields .erp-attribute-input');
                         if (attrInputs.length > 0) {
                             payload.attribute_values = [];
@@ -7644,6 +7672,8 @@
                     document.getElementById('editErpItemCalculatedWeight').value = item.calculated_weight || '';
                     document.getElementById('editErpItemMinOrderLevel').value = item.min_order_level || '';
                     document.getElementById('editErpItemMaxOrderLevel').value = item.max_order_level || '';
+                    document.getElementById('editErpItemPurchaseRate').value = item.purchase_rate ?? '';
+                    document.getElementById('editErpItemSaleRate').value = item.sale_rate ?? '';
                     
                     // Set SKU: read-only for non-REEL; for REEL show prefix + editable number
                     const editSkuWrapper = document.getElementById('editErpSkuFieldWrapper');
@@ -7958,9 +7988,13 @@
                     const cw = document.getElementById('editErpItemCalculatedWeight')?.value;
                     const minOl = document.getElementById('editErpItemMinOrderLevel')?.value;
                     const maxOl = document.getElementById('editErpItemMaxOrderLevel')?.value;
+                    const purchaseRate = document.getElementById('editErpItemPurchaseRate')?.value;
+                    const saleRate = document.getElementById('editErpItemSaleRate')?.value;
                     if (cw) payload.calculated_weight = parseFloat(cw);
                     if (minOl) payload.min_order_level = parseInt(minOl);
                     if (maxOl) payload.max_order_level = parseInt(maxOl);
+                    if (purchaseRate !== undefined && purchaseRate !== '') payload.purchase_rate = parseFloat(purchaseRate); else payload.purchase_rate = null;
+                    if (saleRate !== undefined && saleRate !== '') payload.sale_rate = parseFloat(saleRate); else payload.sale_rate = null;
                     // Collect attribute values from edit modal
                     const editAttrInputs = document.querySelectorAll('#editErpAttributeFields .edit-erp-attribute-input');
                     if (editAttrInputs.length > 0) {
@@ -8082,7 +8116,7 @@
                     isCreate = context === 'create';
                     fixedIds = isCreate
                         ? ['erpCategory', 'erpGroup', 'erpSubGroup', 'erpItemName', 'erpItemNameUrdu', 'erpUnitType', 'erpSkuFieldWrapper', 'erpItemCalculatedWeight', 'erpItemMinOrderLevel', 'erpItemMaxOrderLevel']
-                        : ['editErpCategory', 'editErpGroup', 'editErpSubGroup', 'editErpUnitType', 'editErpSkuFieldWrapper', 'editErpItemName', 'editErpItemNameUrdu', 'editErpItemCalculatedWeight', 'editErpItemMinOrderLevel', 'editErpItemMaxOrderLevel'];
+                        : ['editErpCategory', 'editErpGroup', 'editErpSubGroup', 'editErpUnitType', 'editErpSkuFieldWrapper', 'editErpItemName', 'editErpItemNameUrdu', 'editErpItemCalculatedWeight', 'editErpItemMinOrderLevel', 'editErpItemMaxOrderLevel', 'editErpItemPurchaseRate', 'editErpItemSaleRate'];
                     attrContainerId = isCreate ? 'erpAttributeFields' : 'editErpAttributeFields';
                     attrInputClass = isCreate ? 'erp-attribute-input' : 'edit-erp-attribute-input';
                     submitId = isCreate ? 'submitErpItemBtn' : 'updateErpItemBtn';

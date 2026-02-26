@@ -46,6 +46,7 @@ $apiEndpoints = [
     'brands' => 'api/api/brands.php',
     'shifts' => 'api/api/shifts.php',
     'store-opening-stock' => 'api/api/store_opening_stock.php',
+    'accounts' => 'api/api/accounts.php',
 ];
 
 $endpoint = $pathParts[0] ?? '';
